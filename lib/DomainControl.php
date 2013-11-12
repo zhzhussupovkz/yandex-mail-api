@@ -4,7 +4,7 @@
 * class DomainUsers
 * @author zhzhussupovkz@gmail.com
 */
-class DomainControl {
+class DomainControl extends Base {
 
 	/*
 	Метод позволяет подключить домен.

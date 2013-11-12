@@ -4,7 +4,7 @@
 * class DomainUsers
 * @author zhzhussupovkz@gmail.com
 */
-class DomainUsers {
+class DomainUsers extends Base {
 
 	/*
 	Метод предназначен для регистрации пользователя
