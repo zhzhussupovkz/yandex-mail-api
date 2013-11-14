@@ -19,7 +19,6 @@ class Base {
 
 	//get data by method
 	protected function getRequest($method, $params = array()) {
-		
 		$params = array_merge($user, $params);
 		$params = http_build_query($params);
 
@@ -74,6 +73,24 @@ class Base {
 		} else {
 			return $final;
 		}
+	}
+
+	protected function putRequest($method, $params) {
+		$options = array(
+			CURLOPT_URL => $this->apiUrl.'/'.$method.'.xml',
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => $params,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_SSL_VERIFYPEER => 0,
+			CURLOPT_VERBOSE => true,
+			CURLOPT_CUSTOMREQUEST => "PUT",
+			);
+
+		$ch = curl_init();
+		curl_setopt_array($ch, $options);
+		$result = curl_exec($ch);
+		curl_close($ch);
+		return $result;
 	}
 
 	//get errors by code
