@@ -1,5 +1,8 @@
 <?php
-
+/**
+* class Base
+* @author zhzhussupovkz@gmail.com
+*/
 class Base {
 
 	//api url
