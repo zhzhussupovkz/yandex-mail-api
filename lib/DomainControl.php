@@ -4,7 +4,14 @@
 * class DomainUsers
 * @author zhzhussupovkz@gmail.com
 */
-class DomainControl extends Base {
+class DomainControl extends YMail {
+
+	/*
+	constructor
+	*/
+	public function __construct() {
+		return parent::__construct();
+	}
 
 	/*
 	Метод позволяет подключить домен.

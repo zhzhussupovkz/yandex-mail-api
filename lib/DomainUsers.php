@@ -4,7 +4,14 @@
 * class DomainUsers
 * @author zhzhussupovkz@gmail.com
 */
-class DomainUsers extends Base {
+class DomainUsers extends YMail {
+
+	/*
+	constructor
+	*/
+	public function __construct() {
+		return parent::__construct();
+	}
 
 	/*
 	Метод предназначен для регистрации пользователя

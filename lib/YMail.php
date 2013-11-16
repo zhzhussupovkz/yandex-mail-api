@@ -3,7 +3,7 @@
 * class Base
 * @author zhzhussupovkz@gmail.com
 */
-class Base {
+class YMail {
 
 	//api url
 	protected $url = 'https://pddimp.yandex.ru';
