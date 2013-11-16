@@ -7,13 +7,6 @@
 class DomainUsers extends YMail {
 
 	/*
-	constructor
-	*/
-	public function __construct() {
-		return parent::__construct();
-	}
-
-	/*
 	Метод предназначен для регистрации пользователя
 	*/
 	public function reg_user_token($username, $password) {

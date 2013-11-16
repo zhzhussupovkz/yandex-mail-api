@@ -7,13 +7,6 @@
 class DomainControl extends YMail {
 
 	/*
-	constructor
-	*/
-	public function __construct() {
-		return parent::__construct();
-	}
-
-	/*
 	Метод позволяет подключить домен.
 	*/
 	public function reg_domain($domain_name) {

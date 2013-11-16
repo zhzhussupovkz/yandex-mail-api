@@ -9,13 +9,7 @@ class YMail {
 	protected $url = 'https://pddimp.yandex.ru';
 
 	//domain token
-	protected $domain_token;
-
-	//constructor
-	public function __construct() {
-		$params = Config::getParams('main');
-		$this->domain_token = $params['token'];
-	}
+	protected $domain_token = 'YOUR TOKEN';
 
 	//get data by method
 	protected function getRequest($method, $params = array()) {
