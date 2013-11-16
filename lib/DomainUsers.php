@@ -11,7 +11,7 @@ class DomainUsers extends YMail {
 	*/
 	public function reg_user_token($username, $password) {
 		if (is_null($username) || is_null($password))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('u_login' => $username, 'u_password' => $password);
 		return $this->postRequest('reg_user_token', $params);
 	}
@@ -21,7 +21,7 @@ class DomainUsers extends YMail {
 	*/
 	public function reg_user($domain, $username, $password) {
 		if (is_null($username) || is_null($password) || is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('domain' => $domain, 'login' => $username, 'password' => $password);
 		return $this->postRequest('reg_user', $params);
 	}
@@ -31,7 +31,7 @@ class DomainUsers extends YMail {
 	*/
 	public function get_mail_info($username) {
 		if (is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username);
 		return $this->getRequest('get_mail_info', $params);
 	}
@@ -41,7 +41,7 @@ class DomainUsers extends YMail {
 	*/
 	public function get_user_info($username) {
 		if (is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username);
 		return $this->getRequest('get_user_info', $params);
 	}
@@ -52,7 +52,7 @@ class DomainUsers extends YMail {
 	*/
 	public function edit_user($username, $params = array()) {
 		if (is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$username = array('login' => $username);
 		$params = array_merge($username, $params);
 		return $this->postRequest('get_user_info', $params);
@@ -64,7 +64,7 @@ class DomainUsers extends YMail {
 	*/
 	public function set_forward($username, $address, $copy = 'yes') {
 		if (is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username,'address' => $address, 'copy' => $copy);
 		return $this->postRequest('set_forward', $params);
 	}
@@ -74,7 +74,7 @@ class DomainUsers extends YMail {
 	*/
 	public function get_forward_list($username) {
 		if (is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username);
 		return $this->getRequest('get_forward_list', $params);
 	}
@@ -84,7 +84,7 @@ class DomainUsers extends YMail {
 	*/
 	public function delete_forward($username, $filter_id) {
 		if (is_null($username) || is_null($filter_id))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username, 'filter_id' => $filter_id);
 		return $this->getRequest('delete_forward', $params);
 	}
@@ -94,7 +94,7 @@ class DomainUsers extends YMail {
 	*/
 	public function delete_user($username) {
 		if (is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username);
 		return $this->getRequest('delete_user', $params);
 	}
@@ -104,7 +104,7 @@ class DomainUsers extends YMail {
 	*/
 	public function del_user($domain, $username) {
 		if (is_null($username) || is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username, 'domain' => $domain);
 		return $this->getRequest('del_user', $params);
 	}

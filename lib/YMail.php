@@ -9,14 +9,15 @@ class YMail {
 	protected $url = 'https://pddimp.yandex.ru';
 
 	//domain token
-	protected $domain_token = 'YOUR TOKEN';
+	protected $domain_token = 'YOUR DOMAIN TOKEN';
 
 	//get data by method
 	protected function getRequest($method, $params = array()) {
-		$params = array_merge($user, $params);
+		$token = array('token' => $this->domain_token);
+		$params = array_merge($token, $params);
 		$params = http_build_query($params);
 
-		$url = $this->apiUrl.'?method='.$method.'&'.$params.'&format=xml';
+		$url = $this->url.'/'.$method.'.xml?'.$params;
 
 		$options = array(
 			CURLOPT_URL => $url,
@@ -32,7 +33,7 @@ class YMail {
 		$json = json_encode($xml);
 		$final = json_decode($json, TRUE);
 		if (isset($final['error'])) {
-			return 'Error!';
+			return $this->getError($final['error']['@attributes']['reason']);
 		} else {
 			return $final;
 		}
@@ -40,7 +41,7 @@ class YMail {
 
 	//send post data
 	protected function postRequest($method, $params) {
-		$token = array('token' => $this->token);
+		$token = array('token' => $this->domain_token);
 		$params = array_merge($token, $params);
 
 		foreach ($params as $key => $value) {
@@ -48,7 +49,7 @@ class YMail {
 		}
 
 		$options = array(
-			CURLOPT_URL => $this->apiUrl.'/'.$method.'.xml',
+			CURLOPT_URL => $this->url.'/'.$method.'.xml',
 			CURLOPT_POST => true,
 			CURLOPT_POSTFIELDS => $params,
 			CURLOPT_RETURNTRANSFER => true,
@@ -63,7 +64,7 @@ class YMail {
 		$json = json_encode($xml);
 		$final = json_decode($json, TRUE);
 		if (isset($final['error'])) {
-			return 'Error!';
+			return $this->getError($final['error']['@attributes']['reason']);
 		} else {
 			return $final;
 		}
@@ -71,7 +72,7 @@ class YMail {
 
 	protected function putRequest($method, $params) {
 		$options = array(
-			CURLOPT_URL => $this->apiUrl.'/'.$method.'.xml',
+			CURLOPT_URL => $this->url.'/'.$method.'.xml',
 			CURLOPT_POST => true,
 			CURLOPT_POSTFIELDS => $params,
 			CURLOPT_RETURNTRANSFER => true,
@@ -88,10 +89,11 @@ class YMail {
 	}
 
 	//get errors by code
-	protected function getError($code) {
+	protected function getError($reason) {
 		$errors = array(
-			'1' => 'Не заданы обязательные параметры',
+			'no_params' => 'Не заданы обязательные параметры',
+			'no_user' => 'Не существующий пользователь',
 		);
-		return $errors[$code];
+		return $errors[$reason];
 	}
 }

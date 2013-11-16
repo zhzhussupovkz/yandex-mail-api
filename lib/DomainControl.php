@@ -11,7 +11,7 @@ class DomainControl extends YMail {
 	*/
 	public function reg_domain($domain_name) {
 		if (is_null($domain_name))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('domain' => $domain_name);
 		return $this->postRequest('reg_domain', $params);
 	}
@@ -21,7 +21,7 @@ class DomainControl extends YMail {
 	*/
 	public function reg_default_user($domain, $username) {
 		if (is_null($domain) || is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('domain' => $domain, 'login' => $username);
 		return $this->postRequest('reg_default_user', $params);
 	}
@@ -31,7 +31,7 @@ class DomainControl extends YMail {
 	*/
 	public function del_domain($domain) {
 		if (is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('domain' => $domain);
 		return $this->getRequest('del_domain', $params);
 	}
@@ -41,7 +41,7 @@ class DomainControl extends YMail {
 	*/
 	public function add_logo($domain, $filename) {
 		if (is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('domain' => $domain);
 		return $this->postRequest('add_logo', $params);
 	}
@@ -51,7 +51,7 @@ class DomainControl extends YMail {
 	*/
 	public function del_logo($domain) {
 		if (is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('domain' => $domain);
 		return $this->getRequest('del_logo', $params);
 	}
@@ -61,7 +61,7 @@ class DomainControl extends YMail {
 	*/
 	public function get_domain_users($on_page, $page = '1') {
 		if (is_null($on_page))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('on_page' => $on_page);
 		return $this->getRequest('get_domain_users', $params);
 	}
@@ -71,7 +71,7 @@ class DomainControl extends YMail {
 	*/
 	public function check_user($username) {
 		if (is_null($username))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username);
 		return $this->getRequest('check_user', $params);
 	}
@@ -81,7 +81,7 @@ class DomainControl extends YMail {
 	*/
 	public function add_admin($domain, $username) {
 		if (is_null($username) || is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username, 'domain' => $domain);
 		return $this->postRequest('add_admin', $params);
 	}
@@ -91,7 +91,7 @@ class DomainControl extends YMail {
 	*/
 	public function del_admin($domain, $username) {
 		if (is_null($username) || is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('login' => $username, 'domain' => $domain);
 		return $this->postRequest('del_admin', $params);
 	}
@@ -101,7 +101,7 @@ class DomainControl extends YMail {
 	*/
 	public function get_admins($domain) {
 		if (is_null($domain))
-			return $this->getError('1');
+			return $this->getError('no_params');
 		$params = array('domain' => $domain);
 		return $this->postRequest('get_admins', $params);
 	}
