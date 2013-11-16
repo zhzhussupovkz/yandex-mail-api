@@ -27,6 +27,30 @@ class DomainUsers extends YMail {
 	}
 
 	/*
+	Метод позволяет создать пользователя с зашифрованным паролем.
+	*/
+	public function reg_user_crypto($username, $password) {
+		if (is_null($username) || is_null($password))
+			return $this->getError('no_params');
+		$rand = $this->generate_random(22);
+		$password = md5("1$1".$password."$".$rand);
+		$params = array('login' => $username, 'password' => $password);
+		return $this->postRequest('reg_user_crypto', $params);
+	}
+
+	/*
+	Генерирует случайную строку из len символов [a-zA-Z0-9./]
+	*/
+	private function generate_random($len) {
+		$pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$str = '';
+		for ($i=0; $i < $len; $i++) {
+			$str .= substr($pool, mt_rand(0, strlen($pool) -1), 1);
+		}
+		return $str;
+	}
+
+	/*
 	Метод позволяет получить количество непрочитанных писем.
 	*/
 	public function get_mail_info($username) {
