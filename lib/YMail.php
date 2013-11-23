@@ -29,11 +29,15 @@ class YMail {
 		$ch = curl_init();
 		curl_setopt_array($ch, $options);
 		$result = curl_exec($ch);
+		if ($result == false)
+			throw new Exception(curl_error($ch));
 		curl_close($ch);
 
 		$xml = simplexml_load_string($result);
 		$json = json_encode($xml);
 		$final = json_decode($json, TRUE);
+		if (!$final)
+			throw new Exception('Получены неверные данные, пожалуйста, убедитесь, что запрашиваемый метод API существует');
 		if (isset($final['error'])) {
 			return $this->getError($final['error']['@attributes']['reason']);
 		} else {
@@ -61,10 +65,14 @@ class YMail {
 		$ch = curl_init();
 		curl_setopt_array($ch, $options);
 		$result = curl_exec($ch);
+		if ($result == false)
+			throw new Exception(curl_error($ch));
 		curl_close($ch);
 		$xml = simplexml_load_string($result);
 		$json = json_encode($xml);
 		$final = json_decode($json, TRUE);
+		if (!$final)
+			throw new Exception('Получены неверные данные, пожалуйста, убедитесь, что запрашиваемый метод API существует');
 		if (isset($final['error'])) {
 			return $this->getError($final['error']['@attributes']['reason']);
 		} else {
@@ -88,6 +96,8 @@ class YMail {
 		curl_setopt_array($ch, $options);
 		$result = curl_exec($ch);
 		curl_close($ch);
+		if ($result == false)
+			throw new Exception(curl_error($ch));
 		return $result;
 	}
 
