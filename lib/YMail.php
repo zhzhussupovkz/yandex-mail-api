@@ -1,8 +1,10 @@
 <?php
+
 /**
-* class Base
+* YMail class
 * @author zhzhussupovkz@gmail.com
 */
+
 class YMail {
 
 	//api url
@@ -70,6 +72,7 @@ class YMail {
 		}
 	}
 
+	//put request
 	protected function putRequest($method, $params) {
 		$options = array(
 			CURLOPT_URL => $this->url.'/'.$method.'.xml',
@@ -93,6 +96,7 @@ class YMail {
 		$errors = array(
 			'no_params' => 'Не заданы обязательные параметры',
 			'no_user' => 'Не существующий пользователь',
+			'no token found' => 'Не существующий токен',
 		);
 		return $errors[$reason];
 	}

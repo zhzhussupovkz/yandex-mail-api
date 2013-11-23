@@ -4,6 +4,7 @@
 * MailList class
 * @author zhzhussupovkz@gmail.com
 */
+
 class MailList extends YMail {
 
 	/*

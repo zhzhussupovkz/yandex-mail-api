@@ -1,9 +1,10 @@
 <?php
 
 /**
-* class DomainUsers
+* class DomainControl
 * @author zhzhussupovkz@gmail.com
 */
+
 class DomainControl extends YMail {
 
 	/*

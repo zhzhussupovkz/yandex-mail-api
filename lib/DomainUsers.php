@@ -4,6 +4,7 @@
 * class DomainUsers
 * @author zhzhussupovkz@gmail.com
 */
+
 class DomainUsers extends YMail {
 
 	/*
