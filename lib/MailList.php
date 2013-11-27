@@ -8,13 +8,6 @@
 class MailList extends YMail {
 
 	/*
-	constructor
-	*/
-	public function __construct() {
-		return parent::__construct();
-	}
-
-	/*
 	Метод позволяет создать общий список рассылки домена,
 	включающий всех пользователей домена.
 	*/
