@@ -13,7 +13,7 @@ class Auth extends YMail {
 	/*
 	Метод позволяет установить авторизационный URL-колбэк.
 	*/
-	private function set_mail_callback($domain, $callback) {
+	private function set_mail_callback($domain = null, $callback = null) {
 		if (is_null($domain) || is_null($callback))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain, 'callback' => $callback);
@@ -24,7 +24,7 @@ class Auth extends YMail {
 	/*
 	Метод позволяет получить короткоживущий токен для авторизации.
 	*/
-	private function user_oauth_token($domain, $login) {
+	private function user_oauth_token($domain = null, $login = null) {
 		if (is_null($domain) || is_null($login))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain, 'login' => $login);
@@ -68,7 +68,7 @@ class Auth extends YMail {
 	/*
 	Авторизация
 	*/
-	public function authorization($domain, $callback) {
+	public function authorization($domain = null, $callback = null) {
 		$this->set_mail_callback($domain, $callback);
 		return $this->passport();
 	}

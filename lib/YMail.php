@@ -46,7 +46,7 @@ class YMail {
 	}
 
 	//send post data
-	protected function postRequest($method, $params) {
+	protected function postRequest($method, $params = array()) {
 		$token = array('token' => $this->domain_token);
 		$params = array_merge($token, $params);
 
@@ -81,7 +81,7 @@ class YMail {
 	}
 
 	//put request
-	protected function putRequest($method, $params) {
+	protected function putRequest($method, $params = array()) {
 		$options = array(
 			CURLOPT_URL => $this->url.'/'.$method.'.xml',
 			CURLOPT_POST => true,

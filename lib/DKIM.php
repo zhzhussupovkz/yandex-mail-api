@@ -11,7 +11,7 @@ class DKIM extends YMail {
 	Метод позволяет включить использование DKIM для домена.
 	Подробнее: http://api.yandex.ru/pdd/doc/reference/dkim_set_domain.xml#dkim_set_domain
 	*/
-	public function enable($domain) {
+	public function enable($domain = null) {
 		if (is_null($domain))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain);
@@ -22,7 +22,7 @@ class DKIM extends YMail {
 	Метод предназначен для проверки статуса DKIM для домена.
 	Подробнее: http://api.yandex.ru/pdd/doc/reference/dkim_start_import.xml
 	*/
-	public function status($domain) {
+	public function status($domain = null) {
 		if (is_null($domain))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain);

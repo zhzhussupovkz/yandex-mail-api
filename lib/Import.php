@@ -11,7 +11,7 @@ class Import extends YMail {
 	Метод позволяет сохранить настройки импорта для домена.
 	Подробнее: http://api.yandex.ru/pdd/doc/reference/import_set_domain.xml
 	*/
-	public function set_domain($method, $ext_serv, $params = array()) {
+	public function set_domain($method = null, $ext_serv = null, $params = array()) {
 		if (is_null($method) || is_null($ext_serv))
 			return $this->getError('no_params');
 		$required = array('method' => $method, 'ext_serv' => $ext_serv);
@@ -22,7 +22,7 @@ class Import extends YMail {
 	/*
 	Метод предназначен для запуска импорта почтового ящика.
 	*/
-	public function start_import($login, $password, $params = array()) {
+	public function start_import($login = null, $password = null, $params = array()) {
 		if (is_null($login) || is_null($password))
 			return $this->getError('no_params');
 		$required = array('login' => $login, 'password' => $password);
@@ -33,7 +33,7 @@ class Import extends YMail {
 	/*
 	Метод позволяет проверить состояние импорта почты.
 	*/
-	public function check_import($login) {
+	public function check_import($login = null) {
 		if (is_null($login))
 			return $this->getError('no_params');
 		$params = array('login' => $login);
@@ -43,7 +43,7 @@ class Import extends YMail {
 	/*
 	Метод предназначен для остановки импорта почтового ящика.
 	*/
-	public function stop_import($login) {
+	public function stop_import($login = null) {
 		if (is_null($login))
 			return $this->getError('no_params');
 		$params = array('login' => $login);
@@ -54,7 +54,7 @@ class Import extends YMail {
 	Метод позволяет зарегистрировать пользователя 
 	и запустить импорт его почты.
 	*/
-	public function reg_and_imp($login, $inn_pass, $ext_pass, $params = array()) {
+	public function reg_and_imp($login = null, $inn_pass = null, $ext_pass = null, $params = array()) {
 		if (is_null($login) || is_null($inn_pass) || is_null($ext_pass))
 			return $this->getError('no_params');
 		$required = array('login' => $login, 'inn_password' => $inn_pass,'ext_password' => $ext_pass);
@@ -66,7 +66,7 @@ class Import extends YMail {
 	Метод позволяет запустить импорт одной папки по IMAP.
 	Подробнее: http://api.yandex.ru/pdd/doc/reference/import_import_imap.xml
 	*/
-	public function import_imap($login, $ext_pass, $params = array()) {
+	public function import_imap($login = null, $ext_pass = null, $params = array()) {
 		if (is_null($login) || is_null($ext_pass))
 			return $this->getError('no_params');
 		$required = array('login' => $login, 'ext_password' => $ext_pass);

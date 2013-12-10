@@ -10,7 +10,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет подключить домен.
 	*/
-	public function reg_domain($domain_name) {
+	public function reg_domain($domain_name = null) {
 		if (is_null($domain_name))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain_name);
@@ -20,7 +20,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет задать почтовый ящик по умолчанию для домена.
 	*/
-	public function reg_default_user($domain, $username) {
+	public function reg_default_user($domain = null, $username = null) {
 		if (is_null($domain) || is_null($username))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain, 'login' => $username);
@@ -30,7 +30,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет отключить домен.
 	*/
-	public function del_domain($domain) {
+	public function del_domain($domain = null) {
 		if (is_null($domain))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain);
@@ -40,7 +40,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет добавить логотип домену.
 	*/
-	public function add_logo($domain, $filename) {
+	public function add_logo($domain = null, $filename = null) {
 		if (is_null($domain))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain);
@@ -50,7 +50,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет удалить логотип домена.
 	*/
-	public function del_logo($domain) {
+	public function del_logo($domain = null) {
 		if (is_null($domain))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain);
@@ -60,7 +60,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет получить список почтовых ящиков.
 	*/
-	public function get_domain_users($on_page, $page = '1') {
+	public function get_domain_users($on_page = null, $page = '1') {
 		if (is_null($on_page))
 			return $this->getError('no_params');
 		$params = array('on_page' => $on_page);
@@ -70,7 +70,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет проверить существование пользователя.
 	*/
-	public function check_user($username) {
+	public function check_user($username = null) {
 		if (is_null($username))
 			return $this->getError('no_params');
 		$params = array('login' => $username);
@@ -80,7 +80,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет добавить дополнительного администратора домена.
 	*/
-	public function add_admin($domain, $username) {
+	public function add_admin($domain = null, $username = null) {
 		if (is_null($username) || is_null($domain))
 			return $this->getError('no_params');
 		$params = array('login' => $username, 'domain' => $domain);
@@ -90,7 +90,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет удалить дополнительного администратора для домена.
 	*/
-	public function del_admin($domain, $username) {
+	public function del_admin($domain = null, $username = null) {
 		if (is_null($username) || is_null($domain))
 			return $this->getError('no_params');
 		$params = array('login' => $username, 'domain' => $domain);
@@ -100,7 +100,7 @@ class DomainControl extends YMail {
 	/*
 	Метод позволяет получить список дополнительных администраторов домена.
 	*/
-	public function get_admins($domain) {
+	public function get_admins($domain = null) {
 		if (is_null($domain))
 			return $this->getError('no_params');
 		$params = array('domain' => $domain);
